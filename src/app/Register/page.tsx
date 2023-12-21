@@ -70,7 +70,7 @@ const Register = () => {
       <p className="mt-4 text-center">
         Have an account? <br />
         <a
-          href="/login"
+          href="/Login"
           className="text-blue-500"
           onClick={() => router.push("/Login")}
         >

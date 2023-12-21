@@ -12,10 +12,10 @@ const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const Login = (e) => {
+  const Login = (e:any) => {
     e.preventDefault();
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
+    const email = emailRef.current?.value;
+    const password = passwordRef.current?.value;
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -65,7 +65,7 @@ const Login = () => {
         </button>
       <p className="mt-4 text-md text-black">
         <br />
-        Don't have an account? <br />
+        Do not have an account? <br />
         <Link className="text-blue-500" href="/Register">
           Register Now
         </Link>

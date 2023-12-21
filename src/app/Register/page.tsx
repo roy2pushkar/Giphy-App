@@ -12,18 +12,18 @@ const Register = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const Register = (e) => {
+  const Register = (e:any) => {
     e.preventDefault();
 
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
+    const email = emailRef.current?.value;
+    const password = passwordRef.current?.value;
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed up
         const user = userCredential.user;
         alert("SignUp Successful");
-        router.push("/login")
+        router.push("/Login")
         // ...
       })
       .catch((error) => {

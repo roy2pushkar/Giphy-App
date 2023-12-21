@@ -51,7 +51,7 @@ const Home: React.FC = () => {
       setSearchQuery('');
     }
   };
-   const addToFavorites = (gif) => {
+   const addToFavorites = (gif:any) => {
   console.log('Adding to favorites:', gif);
   toast.success('Added to favorites!' , {
     autoClose:2000,

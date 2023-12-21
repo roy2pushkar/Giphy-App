@@ -34,3 +34,17 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+##Here you can see Pictures of our web App on local Server
+Signedin sucessfully and Authenticate
+![Screenshot (560)](https://github.com/roy2pushkar/AlphaBI-Task/assets/75408762/30769bb5-ce3c-4f3a-a6a9-5c9b8645c59d)
+
+Register new user Sucessfully![Screenshot (565)](https://github.com/roy2pushkar/AlphaBI-Task/assets/75408762/c64efa9f-3a2f-41be-b40e-7da74b5c11a7)
+and here my loading function![Screenshot (561)](https://github.com/roy2pushkar/AlphaBI-Task/assets/75408762/54b265fe-3623-422f-b6cf-2c49e82230fc)
+
+my Giphy Gallery and working add to favorites functionalities
+![Screenshot (563)](https://github.com/roy2pushkar/AlphaBI-Task/assets/75408762/ebd3ea8a-2cf5-4d41-a04e-0e8677dff6b2)
+
+
+
+

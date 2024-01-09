@@ -6,22 +6,31 @@ import { auth } from "../fb";
 import { useRouter } from "next/navigation";
 import { redirect } from "next/navigation";
 import { signInWithEmailAndPassword, UserCredential } from "firebase/auth";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Login = () => {
   const router = useRouter();
-  const emailRef = useRef();
-  const passwordRef = useRef();
+ 
+  const emailRef = useRef<HTMLInputElement>(null);
+const passwordRef = useRef<HTMLInputElement>(null);
+
 
   const Login = (e:any) => {
     e.preventDefault();
     const email = emailRef.current?.value;
     const password = passwordRef.current?.value;
 
-    signInWithEmailAndPassword(auth, email, password)
+   if(email && password){
+     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
         alert("signed in successfully");
+       toast.success('Login successful!', {
+            autoClose: 2000,
+          });
         router.push("/Dashboard");
         // ...
       })
@@ -30,6 +39,8 @@ const Login = () => {
         const errorMessage = error.message;
         alert("failed: Invalid Credentials");
       });
+   }
+   
   };
 
   return (
@@ -69,6 +80,7 @@ const Login = () => {
         <Link className="text-blue-500" href="/Register">
           Register Now
         </Link>
+        <ToastContainer position="top-right" />
       </p>
     </form>
     {/* {error && <p style={{ color: 'red' }}>{error}</p>} */}

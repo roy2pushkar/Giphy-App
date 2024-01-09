@@ -3,8 +3,10 @@
 import React, { useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
 import { useRouter } from "next/navigation";
+
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Link from 'next/link';
 const GIPHY_API_KEY = 'AiVFp8u6D7GnSSA1ewx7u5ZlkJ2dn3Y4';
 const GIPHY_API_BASE_URL = 'https://api.giphy.com/v1/gifs';
 
@@ -62,14 +64,20 @@ const Home: React.FC = () => {
 const handleClickSignin = () => {
   router.push('/Login')
 }
+ {/* You can also use Router push method for Next Routing  */}
 const handleClickRegister = () => {
   router.push('/Register')
+}
+
+const handleClickFavorites = () => {
+  router.push('/Favorites');
 }
 const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <div>
         <div className=' ml-[149px] mr-[149px] m-16 '>
@@ -80,10 +88,13 @@ const [isOpen, setIsOpen] = useState(false);
         <div className={`lg:flex ${isOpen ? 'block' : 'hidden'}`}>
           <ul className="flex space-x-4">
             <li>
-              <a href="#" className="text-white cursor-pointer">Home</a>
+              {/* You can also use Link for Next Routing  */}
+              <Link href="/Login">
+              <p  className="text-white cursor-pointer">Home</p>
+              </Link>
             </li>
             <li>
-              <a href="#" className="text-white cursor-pointer">Favorites</a>
+              <a onClick={handleClickFavorites} className="text-white cursor-pointer">Favorites</a>
             </li>
             <li>
               <a  onClick={handleClickSignin} className="text-white cursor-pointer">Signin</a>

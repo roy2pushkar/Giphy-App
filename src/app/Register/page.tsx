@@ -10,8 +10,9 @@ import { createUserWithEmailAndPassword, UserCredential } from "firebase/auth";
 
 const Register = () => {
   const router = useRouter();
-  const emailRef = useRef();
-  const passwordRef = useRef();
+
+  const emailRef = useRef<HTMLInputElement>(null);
+const passwordRef = useRef<HTMLInputElement>(null);
 
   const Register = (e:any) => {
     e.preventDefault();
@@ -19,7 +20,8 @@ const Register = () => {
     const email = emailRef.current?.value;
     const password = passwordRef.current?.value;
 
-    createUserWithEmailAndPassword(auth, email, password)
+    if(email && password) {
+      createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed up
         const user = userCredential.user;
@@ -33,6 +35,7 @@ const Register = () => {
         alert("SignUp Failed");
         // ..
       });
+    }
   };
 
   return (

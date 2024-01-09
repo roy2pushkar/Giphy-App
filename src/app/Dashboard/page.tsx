@@ -57,10 +57,36 @@ const Home: React.FC = () => {
     autoClose:2000,
   });
 };
+const [isOpen, setIsOpen] = useState(false);
 
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <div>
-        <div className='w-[1136px] m-16 '>
+        <div className=' ml-[149px] mr-[149px] m-16 '>
+          <nav className="  p-4 mt-4 mb-4">
+      <div className=" flex items-center justify-between">
+        <div className="text-white font-bold text-xl">Your Logo</div>
+
+        <div className={`lg:flex ${isOpen ? 'block' : 'hidden'}`}>
+          <ul className="flex space-x-4">
+            <li>
+              <a href="#" className="text-white">Home</a>
+            </li>
+            <li>
+              <a href="#" className="text-white">Favorites</a>
+            </li>
+            <li>
+              <a href="#" className="text-white">Signin</a>
+            </li>
+            <li>
+              <a href="#" className="text-white">Signout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
       <h1 className=' text-center text-lime-300 font-semibold '>GIPHY GIF Gallery</h1>
      <div className='flex justify-around items-center'>
          <input
@@ -89,6 +115,8 @@ const Home: React.FC = () => {
           src={gif.images.fixed_height.url}
           alt={gif.title || 'GIF'}
           className="w-full h-48 object-cover"
+          
+          
         />
         <div className="p-4 flex flex-row justify-between">
           <p className="text-lg font-semibold mb-2">{gif.title || 'Untitled'}</p>

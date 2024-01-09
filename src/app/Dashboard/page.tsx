@@ -2,6 +2,7 @@
 // pages/index.tsx
 import React, { useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
+import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const GIPHY_API_KEY = 'AiVFp8u6D7GnSSA1ewx7u5ZlkJ2dn3Y4';
@@ -40,6 +41,7 @@ const Home: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [gifs, setGifs] = useState<Gif[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const router = useRouter();
 
   const handleSearch = async () => {
     try {
@@ -57,6 +59,12 @@ const Home: React.FC = () => {
     autoClose:2000,
   });
 };
+const handleClickSignin = () => {
+  router.push('/Login')
+}
+const handleClickRegister = () => {
+  router.push('/Register')
+}
 const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -72,16 +80,16 @@ const [isOpen, setIsOpen] = useState(false);
         <div className={`lg:flex ${isOpen ? 'block' : 'hidden'}`}>
           <ul className="flex space-x-4">
             <li>
-              <a href="#" className="text-white">Home</a>
+              <a href="#" className="text-white cursor-pointer">Home</a>
             </li>
             <li>
-              <a href="#" className="text-white">Favorites</a>
+              <a href="#" className="text-white cursor-pointer">Favorites</a>
             </li>
             <li>
-              <a href="#" className="text-white">Signin</a>
+              <a  onClick={handleClickSignin} className="text-white cursor-pointer">Signin</a>
             </li>
             <li>
-              <a href="#" className="text-white">Signout</a>
+              <a onClick={handleClickRegister} className="text-white cursor-pointer">Register</a>
             </li>
           </ul>
         </div>

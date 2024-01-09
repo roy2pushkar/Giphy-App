@@ -5,6 +5,7 @@ import { auth } from "../fb";
 
 import { FirebaseError } from "firebase/app";
 
+
 import { createUserWithEmailAndPassword, UserCredential } from "firebase/auth";
 
 const Register = () => {

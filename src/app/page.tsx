@@ -5,9 +5,11 @@ import Register from "./Register/page";
 
 import Login from "./Login/page";
 
+
 const Pages = () => {
   return (
     <div>
+      
       <Login />
     </div>
   )

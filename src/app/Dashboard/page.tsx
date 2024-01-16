@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
 import { useRouter } from "next/navigation";
+import { ModeToggle } from "@/components/ui/toggle-provider";
 
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -83,6 +84,7 @@ const [isOpen, setIsOpen] = useState(false);
         <div className=' ml-[149px] mr-[149px] m-16 '>
           <nav className="  p-4 mt-4 mb-4">
       <div className=" flex items-center justify-between">
+        
         <div className="text-white font-bold text-xl">Your Logo</div>
 
         <div className={`lg:flex ${isOpen ? 'block' : 'hidden'}`}>
@@ -101,6 +103,11 @@ const [isOpen, setIsOpen] = useState(false);
             </li>
             <li>
               <a onClick={handleClickRegister} className="text-white cursor-pointer">Register</a>
+            </li>
+            <li>
+             
+          <ModeToggle />
+       
             </li>
           </ul>
         </div>

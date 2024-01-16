@@ -14,7 +14,7 @@ const Login = () => {
   const router = useRouter();
  
   const emailRef = useRef<HTMLInputElement>(null);
-const passwordRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
 
 
   const Login = (e:any) => {

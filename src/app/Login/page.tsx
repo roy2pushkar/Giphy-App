@@ -21,6 +21,8 @@ const Login = () => {
     e.preventDefault();
     const email = emailRef.current?.value;
     const password = passwordRef.current?.value;
+    console.log(email);
+    console.log(password);
 
    if(email && password){
      signInWithEmailAndPassword(auth, email, password)
@@ -44,12 +46,15 @@ const Login = () => {
   };
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center bg-[#F2F4F8]">
-  <div className="w-[580px] mx-auto p-6 bg-white rounded-md shadow-lg mt-8">
+    <div className="w-screen h-screen flex items-center justify-center bg-[#0f172a]">
+  <div className="w-[480px] mx-auto p-6 bg-[#e5e7eb] rounded-lg shadow-lg mt-8">
     <h2 className="text-2xl font-bold mb-4 text-lime-400 text-center">Login</h2>
     <form onSubmit={Login} className="mt-4 text-center">
-      <label className="block mb-2 text-black">
-        Email:
+      <label className="block mb-2 text-black text-start">
+        <p>
+          Email
+  
+        </p>
         <input
           type="email"
           ref={emailRef}
@@ -58,8 +63,11 @@ const Login = () => {
         />
       </label>
       <br />
-      <label className="block mb-2 text-black">
-        Password:
+      <label className="block mb-2 text-black text-start">
+        <p>Password
+          <p className="text-end cursor-pointer text-blue-700"><a>forgot password</a></p>
+        </p>
+        
         <input
           type="password"
           ref={passwordRef}
@@ -70,7 +78,7 @@ const Login = () => {
       
       <button
           type="submit"
-          className="mt-6 p-2 pl-6 pr-6 bg-blue-500 text-white  rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue"
+          className="mt-6 p-2 pl-6 pr-6 bg-blue-500 w-[436px] text-white  rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue"
         >
           Login
         </button>

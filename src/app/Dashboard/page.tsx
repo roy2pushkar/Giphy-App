@@ -96,7 +96,7 @@ const [isOpen, setIsOpen] = useState(false);
               </Link>
             </li>
             <li>
-              <a onClick={handleClickFavorites} className="text-white cursor-pointer">Favorites</a>
+              <a onClick={handleClickFavorites} className="text-white  cursor-pointer">Favorites</a>
             </li>
             <li>
               <a  onClick={handleClickSignin} className="text-white cursor-pointer">Signin</a>
@@ -121,6 +121,12 @@ const [isOpen, setIsOpen] = useState(false);
         placeholder="Enter your search..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
+        onKeyDown={(e) => {
+          if(e.key === 'Enter')
+          {
+            handleSearch();
+          }
+        }}
       />
       <button
         className="p-2 pl-4 pr-4 mt-2 bg-slate-400 text-white rounded-md mr-8"

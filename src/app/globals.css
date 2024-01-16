@@ -1,6 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* globals.css */
+/* globals.css */
+.dark .dashboard-text {
+  @apply text-white; /* Apply Tailwind's text-white utility class for dark mode */
+}
+
+.light .dashboard-text {
+  @apply text-black; /* Apply Tailwind's text-black utility class for light mode */
+}
+
+
  
 @layer base {
   :root {

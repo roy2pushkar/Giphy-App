@@ -47,6 +47,7 @@ const Home: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
   const [clickedGifs, setClickedGifs] = useState<Gif[]>([]);
+  
 
   const handleSearch = async () => {
     try {

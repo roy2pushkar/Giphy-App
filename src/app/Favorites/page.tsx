@@ -1,10 +1,13 @@
-'use client'
+'use client';
+import { useRouter , useSearchParams} from 'next/navigation';
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 
 const Favorites: React.FC = () => {
   const router = useRouter();
-  const favoritesParam = router.query.favorites as string | undefined;
+    const searchParams = useSearchParams()
+
+    const favoritesParam = searchParams.get('favorites')
+
   const initialFavorites = favoritesParam ? JSON.parse(favoritesParam) : [];
   const [favorites, setFavorites] = useState<Gif[]>(initialFavorites);
   // Define the Gif type

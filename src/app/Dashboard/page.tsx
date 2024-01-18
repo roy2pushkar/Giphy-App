@@ -109,7 +109,7 @@ const handleClickRegister = () => {
           <div className={`lg:flex ${isOpen ? 'block' : 'hidden'}`}>
             {isOpen && (
               <div className="lg:hidden">
-                <ul className="flex flex-col justify-center items-center mt-8 space-x-4">
+                <ul className="flex flex-col justify-start items-start mt-12 gap-2 space-x-4">
                   <li>
                     <Link href="/Login">
                       <p className="text-white cursor-pointer">Home</p>
@@ -143,7 +143,7 @@ const handleClickRegister = () => {
       <div className="flex flex-col sm:flex-row items-center justify-around">
         <input
           type="text"
-          className="w-full sm:w-2/3 p-2 border border-gray-300 rounded-md mt-4 text-black "
+          className="w-full sm:w-2/3 p-2 border border-gray-300 rounded-md mt-4 text-white "
           placeholder="Enter your search..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}

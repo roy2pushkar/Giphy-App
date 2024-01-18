@@ -46,54 +46,53 @@ const Login = () => {
   };
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center bg-[#0f172a]">
-  <div className="w-[480px] mx-auto p-6 bg-[#e5e7eb] rounded-lg shadow-lg mt-8">
-    <h2 className="text-2xl font-bold mb-4 text-lime-400 text-center">Login</h2>
-    <form onSubmit={Login} className="mt-4 text-center">
-      <label className="block mb-2 text-black text-start">
-        <p>
-          Email
-  
-        </p>
-        <input
-          type="email"
-          ref={emailRef}
-          className="w-full p-2 border border-gray-300 rounded-md"
-          required
-        />
-      </label>
-      <br />
-      <label className="block mb-2 text-black text-start">
-        <p>Password
-          <p className="text-end cursor-pointer text-blue-700"><a>forgot password</a></p>
-        </p>
-        
-        <input
-          type="password"
-          ref={passwordRef}
-          className="w-full p-2 border border-gray-300 rounded-md"
-          required
-        />
-      </label>
-      
-      <button
-          type="submit"
-          className="mt-6 p-2 pl-6 pr-6 bg-blue-500 w-[436px] text-white  rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue"
-        >
-          Login
-        </button>
-      <p className="mt-4 text-md text-black">
-        <br />
-        Do not have an account? <br />
-        <Link className="text-blue-500" href="/Register">
-          Register Now
-        </Link>
-        <ToastContainer position="top-right" />
-      </p>
-    </form>
-    {/* {error && <p style={{ color: 'red' }}>{error}</p>} */}
-  </div>
-</div>
+   <div className="w-screen h-screen flex items-center justify-center bg-[#0f172a]">
+      <div className="w-full md:w-[80%] lg:w-[60%] xl:w-[50%] mx-auto p-6  rounded-lg shadow-md mt-8">
+        <h2 className="text-2xl font-bold mb-4 text-lime-400 text-center">Login</h2>
+        <form onSubmit={Login} className="mt-4 text-center">
+          <label className="block mb-2 text-white text-start">
+            <p>Email</p>
+            <input
+              type="email"
+              ref={emailRef}
+              className="w-full p-2 border border-gray-300 rounded-md"
+              required
+            />
+          </label>
+          <br />
+          <label className="block mb-2 text-white text-start">
+            <p>Password
+              <p className="text-end cursor-pointer text-blue-700">
+                <a>forgot password</a>
+              </p>
+            </p>
+            <input
+              type="password"
+              ref={passwordRef}
+              className="w-full p-2 border border-gray-300 rounded-md"
+              required
+            />
+          </label>
+          
+          <button
+            type="submit"
+            className="mt-6 p-2 pl-6 pr-6 bg-blue-500 w-full text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue"
+          >
+            Login
+          </button>
+
+          <p className="mt-4 text-md text-white">
+            <br />
+            Do not have an account? <br />
+            <Link href="/Register" className="text-blue-500">
+              Register Now
+            </Link>
+            <ToastContainer position="top-right" />
+          </p>
+        </form>
+        {/* {error && <p style={{ color: 'red' }}>{error}</p>} */}
+      </div>
+    </div>
 
   );
 };

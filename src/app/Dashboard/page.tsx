@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
 import { ModeToggle } from '@/components/ui/toggle-provider';
-
+import { Menu, X } from "react-feather";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link';
@@ -47,6 +47,11 @@ const Home: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
   const [clickedGifs, setClickedGifs] = useState<Gif[]>([]);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
   
 
   const handleSearch = async () => {
@@ -85,94 +90,102 @@ const handleClickRegister = () => {
   router.push('/Register')
 }
 
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  
 
   return (
     <div>
-      <div className=' ml-[149px] mr-[149px] m-16 '>
-        <nav className='  p-4 mt-4 mb-4'>
-          <div className=' flex items-center justify-between'>
-            <div className='text-white font-bold text-xl'>Your Logo</div>
-            <div className={`lg:flex ${isOpen ? 'block' : 'hidden'}`}>
-              <ul className='flex space-x-4'>
-                <li>
-                  <Link href='/Login'>
-                    <p className='text-white cursor-pointer'>Home</p>
-                  </Link>
-                </li>
-                <li>
-                  <a onClick={handleClickFavorites} className='text-white cursor-pointer'>
-                    Favorites
-                  </a>
-                </li>
-                <li>
-                  <a onClick={handleClickSignin} className='text-white cursor-pointer'>
-                    Signin
-                  </a>
-                </li>
-                <li>
-                  <a onClick={handleClickRegister} className='text-white cursor-pointer'>
-                    Register
-                  </a>
-                </li>
-                <li>
-                  <ModeToggle />
-                </li>
-              </ul>
-            </div>
+      <div className="lg:ml-[149px] lg:mr-[149px] m-16">
+     <nav className="p-4 mt-4 mb-4">
+        <div className="flex items-center justify-between">
+          <div className="text-white font-bold text-xl">Your Logo</div>
+          <div className="lg:hidden">
+            <button
+              onClick={handleClick}
+              className="text-white cursor-pointer focus:outline-none"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
-        </nav>
-        <h1 className=' text-center text-lime-300 font-semibold '>GIPHY GIF Gallery</h1>
-        <div className='flex justify-around items-center'>
-          <input
-            type='text'
-            className='w-2/3 p-2 border border-gray-300 rounded-md mt-4 text-black ml-14'
-            placeholder='Enter your search...'
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                handleSearch();
-              }
-            }}
-          />
-          <button
-            className='p-2 pl-4 pr-4 mt-2 bg-slate-400 text-white rounded-md mr-8'
-            onClick={handleSearch}
-            disabled={loading} // Disable the button when loading
-          >
-            Search
-          </button>
+          <div className={`lg:flex ${isOpen ? 'block' : 'hidden'}`}>
+            {isOpen && (
+              <div className="lg:hidden">
+                <ul className="flex flex-col justify-center items-center mt-8 space-x-4">
+                  <li>
+                    <Link href="/Login">
+                      <p className="text-white cursor-pointer">Home</p>
+                    </Link>
+                  </li>
+                  <li>
+                    <a onClick={handleClickFavorites} className="text-white cursor-pointer">
+                      Favorites
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={handleClickSignin} className="text-white cursor-pointer">
+                      Signin
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={handleClickRegister} className="text-white cursor-pointer">
+                      Register
+                    </a>
+                  </li>
+                  <li>
+                    <ModeToggle />
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
         </div>
+      </nav>
+      <h1 className="text-center text-lime-300 font-semibold">GIPHY GIF Gallery</h1>
+      <div className="flex flex-col sm:flex-row items-center justify-around">
+        <input
+          type="text"
+          className="w-full sm:w-2/3 p-2 border border-gray-300 rounded-md mt-4 text-black "
+          placeholder="Enter your search..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSearch();
+            }
+          }}
+        />
+        <button
+          className="p-2 pl-4 pr-4 mt-2 bg-slate-400 text-white rounded-md sm:mr-8"
+          onClick={handleSearch}
+          disabled={loading} // Disable the button when loading
+        >
+          Search
+        </button>
+      </div>
 
-        {loading && <div>Loading...</div>}
+      {loading && <div>Loading...</div>}
 
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8 ml-14'>
-          {gifs.map((gif) => (
-            <div key={gif.id} className='flex justify-center'>
-              <div className='rounded overflow-hidden shadow-lg'>
-                <img
-                  src={gif.images.fixed_height.url}
-                  alt={gif.title || 'GIF'}
-                  className='w-full h-48 object-cover'
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8 ml-14">
+        {gifs.map((gif) => (
+          <div key={gif.id} className="flex justify-center">
+            <div className="rounded overflow-hidden shadow-lg">
+              <img
+                src={gif.images.fixed_height.url}
+                alt={gif.title || "GIF"}
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-4 flex flex-row justify-between">
+                <p className="text-lg font-semibold mb-2">{gif.title || "Untitled"}</p>
+                <FaHeart
+                  className="cursor-pointer text-red-500 font-medium"
+                  onClick={() => addToFavorites(gif)}
                 />
-                <div className='p-4 flex flex-row justify-between'>
-                  <p className='text-lg font-semibold mb-2'>{gif.title || 'Untitled'}</p>
-                  <FaHeart
-                    className='cursor-pointer text-red-500 font-medium'
-                    onClick={() => addToFavorites(gif)}
-                  />
-                  <ToastContainer position='top-right' />
-                </div>
+                <ToastContainer position="top-right" />
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
+    </div>
     </div>
   );
 };

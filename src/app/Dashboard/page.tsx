@@ -8,6 +8,8 @@ import { Menu, X } from "react-feather";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link';
+import Image from 'next/image';
+
 
 const GIPHY_API_KEY = 'AiVFp8u6D7GnSSA1ewx7u5ZlkJ2dn3Y4';
 const GIPHY_API_BASE_URL = 'https://api.giphy.com/v1/gifs';
@@ -168,11 +170,13 @@ const handleClickRegister = () => {
         {gifs.map((gif) => (
           <div key={gif.id} className="flex justify-center">
             <div className="rounded overflow-hidden shadow-lg">
-              <img
-                src={gif.images.fixed_height.url}
-                alt={gif.title || "GIF"}
-                className="w-full h-48 object-cover"
-              />
+              <Image
+                  src={gif.images.fixed_height.url}
+                  alt={gif.title || "GIF"}
+                  
+                  className="w-full h-48 object-cover"
+/>
+
               <div className="p-4 flex flex-row justify-between">
                 <p className="text-lg font-semibold mb-2">{gif.title || "Untitled"}</p>
                 <FaHeart

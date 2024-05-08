@@ -1,6 +1,8 @@
 'use client';
 import { useRouter , useSearchParams} from 'next/navigation';
 import { useState } from 'react';
+import Image from 'next/image';
+
 
 const Favorites: React.FC = () => {
   const router = useRouter();
@@ -46,7 +48,7 @@ type Gif = {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {favorites.map((favorite: Gif) => (
           <div key={favorite.id}>
-            <img
+            <Image
               src={favorite.images.fixed_height.url}
               alt={favorite.title || 'GIF'}
               className="w-full h-48 object-cover"
